@@ -10,9 +10,9 @@
 ## How to Install .env folder
 
  1. Inside root folder. Run `py -m venv .venv` for Windows or `python3 -m venv .venv` for Mac or Linux, to create a .env folder environment.
- 2.  2. Activate environment `.\.venv\Scripts\activate`. You should see something like this 
+ 2. Activate environment `.\.venv\Scripts\activate`. You should see something like this 
 `(.venv) PS C:\Users\defaultUser\Desktop\flask-api-app>` on your terminal.
- 3. Once environment is activated you can install flask `pip install flask`
+ 3. Once environment is activated you can install the requirements including flask `pip install requirements.txt`
 
 ## How to run the app
 The app contains 5 folder for each rest api.
