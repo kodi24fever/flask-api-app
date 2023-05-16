@@ -6,5 +6,5 @@ app = Flask(__name__)
 
 
 # sample function to create an endpoint which should return a json format
-def profile():
+def browse():
     return "<h1>Hello. <br> If you see this it means your app is working. <br>This is a sample get request.</h1>"
