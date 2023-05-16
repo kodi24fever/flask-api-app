@@ -23,10 +23,10 @@ The app contains 5 folder for each rest api.
 
 
 ## How to correctly run the app
-The app contains app.py file that works as a navigation bar where you can change to ur url.
+The app contains app.py file that works as a navigation bar where you can change to url.
 
  1. Change directory to root directory.
- 2. Run `flask --app app.py run --debug` and start editing the file.
+ 2. Run `flask --app app.py run --debug` and start editing your file.
  3. Go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
  4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
 
