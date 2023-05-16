@@ -27,11 +27,11 @@ The app contains app.py file that works as a navigation bar where you can change
 
  1. Change directory to root directory.
  2. Run `flask --app app.py run --debug` and start editing your file.
- 3. Go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
+ 3. Go to `localhost:5000` and you should see a welcome message and links to your porject url.
  4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
 
 
-# Important
+# Important Note related to adding your files to app.py
 1. Remember to make the required changes using [flask blueprint](https://flask.palletsprojects.com/en/2.2.x/blueprints/).
 2. Check the book_browsing_sorting_api as a guide.
 3. Remember to register your route in app.py.
