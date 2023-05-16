@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/") # api name
 # sample function to create an endpoint which should return a json format
 def index():
-    return "<h1>Hello. <br> This is index page</h1>"
+    return "<h1>Hello. <br> This is index page</h1> <a href='/browse'>Browse API</a> <br><br> <a href='/profile'>Profile Managment API</a> <br><br> <a href='/shopping'>Shopping API</a> <br><br> <a href='/book-details'>Book Details API</a> <br><br> <a href='/book-rating'>Book Rating API</a>"
 
 
 
