@@ -22,4 +22,19 @@ The app contains 5 folder for each rest api.
  3. Go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
 
 
+## How to correctly run the app
+The app contains app.py file that works as a navigation bar where you can change to ur url.
+
+ 1. Change directory to root directory.
+ 2. Run `flask --app app.py run --debug` and start editing the file.
+ 3. Go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
+ 4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
+
+
+# Important
+1. Remember to make the required changes using [flask blueprint](https://flask.palletsprojects.com/en/2.2.x/blueprints/).
+2. Check the book_browsing_sorting_api as a guide.
+3. Remember to register your route in app.py.
+
+
 ### Happy Coding!
