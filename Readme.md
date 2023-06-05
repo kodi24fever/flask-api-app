@@ -3,11 +3,11 @@
 ## 	How it Works
 Our flask-api-app is an web based application that contains different API's (Application Programming Interfaces) routes that connects to a database and and users, or developers, are able to see the data from the database.
 
- - First, the application contains navigation links to a respective feature.
- - Each feature contains its owns logic.
-  - database.py functions as database models.
-   - app.py is the main file that runs the entire application, and also for populating basic dummy data.
-   - Populating data can be done using flask shell, in this case, we used a try-except clauses to catch the error in case data is repeated, so the app does not stop running.
+- First, the application contains navigation links to a respective feature.
+- Each feature contains its owns logic.
+- database.py functions as database models.
+- app.py is the main file that runs the entire application, and also for populating basic dummy data.
+- Populating data can be done using flask shell, in this case, we used a try-except clauses to catch the error in case data is repeated, so the app does not stop running.
 
 ## 	Required Software
 `python >= 3.10.x` [Download](https://www.python.org/downloads/)
