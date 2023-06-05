@@ -1,7 +1,7 @@
 # Welcome to flask-api-app!
 
 ## 	How it Works
-Our flask-api-app is an web based application that contains different API's (Application Programming Interfaces) routes that connects to a database and and users, or developers, are able to see the data from the database.
+Our flask-api-app is an web based application that contains different API's (Application Programming Interfaces) routes that connects to a database. Users and developers are able to see the data from the database when they accessed a route.
 
 - First, the application contains navigation links to a respective feature.
 - Each feature contains its owns logic.
