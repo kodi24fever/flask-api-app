@@ -4,7 +4,6 @@ from book_browsing_sorting_api.browse import browse
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 
 
-
 # this part is the navigation bar to change between urls
 app = Flask(__name__)
 @app.route("/") # api name
