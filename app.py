@@ -25,6 +25,10 @@ with app.app_context():
         # Populate Fields
         populate_books = BooksTesting(id=1, name="Star Wars")
 
+        # Create your model instance here and populate fields
+
+
+        # Add your values to the database here
         db.session.add(populate_books)
 
 
