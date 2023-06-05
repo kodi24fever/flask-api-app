@@ -26,6 +26,11 @@ with app.app_context():
         populate_books = BooksTesting(id=1, name="Star Wars")
 
         db.session.add(populate_books)
+
+
+
+
+        # It commits or saves all fileds to the database
         db.session.commit()
     
     except Exception as e:
