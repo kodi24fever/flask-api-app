@@ -1,11 +1,38 @@
 from flask import Flask
 from book_browsing_sorting_api.browse import browse
+from flask_sqlalchemy import SQLAlchemy
+from database import db, BooksTesting
 
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 
 
 # this part is the navigation bar to change between urls
 app = Flask(__name__)
+
+# databse connectionss
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize the database object
+db.init_app(app)
+
+# Create the .db file and tables
+with app.app_context():
+    # Creates non existing tables
+    db.create_all()
+
+    try:
+        # Populate Fields
+        populate_books = BooksTesting(id=1, name="Star Wars")
+
+        db.session.add(populate_books)
+        db.session.commit()
+    
+    except Exception as e:
+        print( f'There was an error: {str(e)}')
+
+
+
 @app.route("/") # api name
 # sample function to create an endpoint which should return a json format
 def index():
