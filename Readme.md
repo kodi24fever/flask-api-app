@@ -12,7 +12,7 @@ Our flask-api-app is an web based application that contains different API's (App
 ## 	Required Software
 `python >= 3.10.x` [Download](https://www.python.org/downloads/)
 
-Any text editorL
+Any Text Editor of your choice:
  - [Visual Studio Code](https://code.visualstudio.com/download)
  - [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows)
 
