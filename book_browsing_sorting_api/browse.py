@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from database import db, BooksTesting
 
 browse = Blueprint('browse', __name__)
@@ -15,4 +15,4 @@ def show_message():
     for book in books:
         print("id: " + str(book.id))
         print("name: " + book.name)
-    return "<h1>Hello. <br> If you see this it means your app is working. <br>This is a sample get request.</h1>"
+    return render_template("sample.html", title="sample", books=books)
