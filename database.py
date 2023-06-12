@@ -22,6 +22,16 @@ class BooksTesting(db.Model):
 # Databse Model for Feature 3:
 
 # Databse Model for Feature 4:
+class BookDetails(db.Model):
+    book_name = db.Column(db.String, primary_key=True)
+    ISBN = db.Column(db.Integer)
+    book_description = db.Column(db.String)
+    book_price = db.Column(db.Float)
+    author = db.Column(db.String)
+    genre = db.Column(db.String)
+    year_published = db.Column(db.Integer)
+    copies_sold = db.Column(db.Integer)
+
 
 # Database Model for Feature 5:
 
