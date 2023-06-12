@@ -46,6 +46,56 @@ The app contains app.py file that works as a navigation bar where you can change
  3. Go to `localhost:5000` and you should see a welcome message and links to your porject url.
  4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
 
+ ## Creating Database Models using Flask-SQLAlchemy or commonly know "DB Tables"
+
+The app uses Flask-SQLAclhemy to handle the insertion of new tables and their content to a SQLite database. Follow these steps to create new content to the database.
+
+#### Creating Your First DB Model or Table
+
+1. Go to database.py in root directory and create a python class with `db.Model` as a parameter. Example: `class  BookDetails(db.Model):`
+
+2. Start adding the table attributes inside the class. Example: 
+
+```python
+	ISBN = db.Column(db.Integer)
+	book_description = db.Column(db.String)
+```
+
+4. You should have something similar to this:
+```python
+# Databse Model Sample:
+
+class BookDetails(db.Model):
+	book_name = db.Column(db.String, primary_key=True)
+	ISBN = db.Column(db.Integer)
+	book_description = db.Column(db.String)
+	book_price = db.Column(db.Float)
+	author = db.Column(db.String)
+	genre = db.Column(db.String)
+	year_published = db.Column(db.Integer)
+	copies_sold = db.Column(db.Integer)
+```
+
+#### Inserting Dummy Data
+1. Add your class name in app.py
+```python
+from  database  import  db,migrate,BooksTesting, BookDetails,[Your_Class_Name]
+```
+2. Inside the try clause, pass the parameters needed for your class and save the instance in a new variable.
+  ```python
+newInstance = My_Class_Name(passing argumments ....)
+```
+3. Add the model to the session. This will create a table in the database with all the dummy data.
+  ```python
+db.session.add(newInstance)
+```
+
+#### Showing Data
+At this point you should be able to query all data, after importing it  in your route using the following sample line:
+  ```python
+myData= MyDBModel.query.all()
+```
+
 
 # Important Note related to adding your files to app.py
 1. Remember to make the required changes using [flask blueprint](https://flask.palletsprojects.com/en/2.2.x/blueprints/).
