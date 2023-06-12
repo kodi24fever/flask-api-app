@@ -16,6 +16,8 @@ Any Text Editor of your choice:
  - [Visual Studio Code](https://code.visualstudio.com/download)
  - [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows)
 
+ </br>
+
  
 ## Installation
 
@@ -46,9 +48,13 @@ The app contains app.py file that works as a navigation bar where you can change
  3. Go to `localhost:5000` and you should see a welcome message and links to your porject url.
  4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
 
- ## Creating Database Models using Flask-SQLAlchemy or commonly know "DB Tables"
+ </br>
+
+
+## Creating Database Models using Flask-SQLAlchemy or commonly know "DB Tables"
 
 The app uses Flask-SQLAclhemy to handle the insertion of new tables and their content to a SQLite database. Follow these steps to create new content to the database.
+
 
 #### Creating Your First DB Model or Table
 
@@ -95,6 +101,9 @@ At this point you should be able to query all data, after importing it  in your 
   ```python
 myData= MyDBModel.query.all()
 ```
+
+
+</br>
 
 
 # Important Note related to adding your files to app.py
