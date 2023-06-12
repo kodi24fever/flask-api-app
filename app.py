@@ -1,7 +1,9 @@
 from flask import Flask
 from book_browsing_sorting_api.browse import browse
 from flask_sqlalchemy import SQLAlchemy
-from database import db, BooksTesting, BookDetails
+from database import db,migrate, BooksTesting, BookDetails
+
+
 
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 from book_details_api.book_details import book_details
@@ -15,6 +17,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the database object
 db.init_app(app)
+migrate.init_app(app,db)
+
+
+# Migrate library let u update ur models
+
 
 # Create the .db file and tables
 with app.app_context():
@@ -23,7 +30,7 @@ with app.app_context():
 
     try:
         # Populate Fields
-        populate_books = BooksTesting(id=1, name="Star Wars")
+        populate_books = BooksTesting(id=1, name="Star Wars", book_detail="Hello detail")
 
         # Create your model instance here and populate fields
         populate_books = BookDetails(book_name="The History of Jazz", ISBN="9780190087210", book_description="An updated new edition of Ted Gioia's universally acclaimed history of jazz, with a wealth of new insight on this music's past, present, and future.",

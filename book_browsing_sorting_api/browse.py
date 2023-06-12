@@ -15,4 +15,5 @@ def show_message():
     for book in books:
         print("id: " + str(book.id))
         print("name: " + book.name)
+        #print("detail: " + book.book_detail)
     return render_template("sample.html", title="sample", books=books)
