@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+      crossorigin="anonymous"
+    />
+    <script>
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Books Details <br> Here you can view a book's details such as Title, ISBN, Genre, and more <br>This is a sample get request.</h1>
+        <br>
+        <br>
+        <h4>Sample Data Showing From Database</h4>
+
+        <ul>
+            {% for book in details %}
+                <li>Book's Title: {{ book.book_name }}</li>
+                <li>ISBN: {{ book.ISBN }}</li>
+                <li>Description: {{ book.book_description }} </li>
+                <li>Price: ${{ book.book_price }}</li>
+                <li>Author: {{ book.author }}</li>
+                <li>Genre: {{ book.genre }}</li>
+                <li>Year of Publication: {{ book.year_published }}</li>
+                <li>Copies Sold: {{ book.copies_sold }}</li>
+            {% endfor %}
+        </ul>
+  </div>
+  </body>
 </html>
