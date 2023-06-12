@@ -32,7 +32,7 @@ Any Text Editor of your choice:
 `(.venv) PS C:\Users\defaultUser\Desktop\flask-api-app>` on your terminal.
  3. Once environment is activated you can install the requirements including flask `pip install -r requirements.txt`
 
-## How to run the app
+## How to run the app (DEPECRATED)
 The app contains 5 folder for each rest api.
 
  1. Change directory to your respective rest api folder or create a new one.
