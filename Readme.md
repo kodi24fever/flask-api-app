@@ -105,6 +105,18 @@ myData= MyDBModel.query.all()
 
 </br>
 
+# Doing the Migrations
+Flask-Migration was added to the app in case developers want to update their models. In order to do so do the following:
+1. Install the model if it is not already installed.
+`pip install -r requirements.txt`
+2. Make the changes in your DB Model class.
+3. Open a new terminal window and type `flask db migrate -m "explain_your_migration"`
+4. Upgrade your database table`flask db upgrade`
+5. (Optional) Type `flask db --help` to look all the options
+
+
+</br>
+
 
 # Important Note related to adding your files to app.py
 1. Remember to make the required changes using [flask blueprint](https://flask.palletsprojects.com/en/2.2.x/blueprints/).
