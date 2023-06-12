@@ -57,8 +57,8 @@ The app uses Flask-SQLAclhemy to handle the insertion of new tables and their co
 2. Start adding the table attributes inside the class. Example: 
 
 ```python
-	ISBN = db.Column(db.Integer)
-	book_description = db.Column(db.String)
+ISBN = db.Column(db.Integer)
+book_description = db.Column(db.String)
 ```
 
 4. You should have something similar to this:
