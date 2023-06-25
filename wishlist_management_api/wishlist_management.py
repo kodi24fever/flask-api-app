@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask import Blueprint, render_template
 from flask_sqlalchemy import SQLAlchemy
 from database import db, Wishlist
-# from flask_marshmallow import Marshmallow
 import os
 
 
@@ -10,7 +9,6 @@ wishlist_management = Blueprint('wishlist_management', __name__)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 
-# ma = Marshmallow(wishlist_management)
 
 # ProductSchema class
 class ProductSchema():
@@ -18,7 +16,7 @@ class ProductSchema():
         fields = ('id', 'userId', 'name')
 
 #Innit Schema
-# product_schema = ProductSchema()
+product_schema = ProductSchema()
 
 
 #Create a Wishlist
