@@ -1,15 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate # adding migrate
 
 db = SQLAlchemy()
-migrate = Migrate() # Initializes migrate object
-
 
 # Model for Feature 1: Book Sorting (sample)
 class BooksTesting(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    book_detail = db.Column(db.String(50))
 
 '''
     Below here you can create the model or table for the database.
@@ -26,21 +22,7 @@ class BooksTesting(db.Model):
 # Databse Model for Feature 3:
 
 # Databse Model for Feature 4:
-class BookDetails(db.Model):
-    book_name = db.Column(db.String, primary_key=True)
-    ISBN = db.Column(db.Integer)
-    book_description = db.Column(db.String)
-    book_price = db.Column(db.Float)
-    author = db.Column(db.String)
-    genre = db.Column(db.String)
-    year_published = db.Column(db.Integer)
-    copies_sold = db.Column(db.Integer)
-
 
 # Database Model for Feature 5:
 
 # Databse Model for Feature 6:
-class Wishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer)
-    name = db.Column(db.String)
