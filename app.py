@@ -1,12 +1,12 @@
+import random
+import string
 from flask import Flask
 from book_browsing_sorting_api.browse import browse
 from flask_sqlalchemy import SQLAlchemy
-from database import db,migrate, BooksTesting, BookDetails
-
-
-
+from database import Wishlist, db,migrate, BooksTesting, BookDetails
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 from book_details_api.book_details import book_details
+from wishlist_management_api.wishlist_management import wishlist_management
 
 # this part is the navigation bar to change between urls
 app = Flask(__name__)
@@ -30,18 +30,17 @@ with app.app_context():
 
     try:
         # Populate Fields
-        populate_books = BooksTesting(id=1, name="Star Wars", book_detail="Hello detail")
-
+        populate_books = BooksTesting(name="Star Wars", book_detail="Hello detail")
+        for i in range(6):
+            wishlist_db = Wishlist(userId=i, name=''.join(random.choices(string.ascii_letters, k=5)))
+            db.session.add(wishlist_db)
+        # TODO: Name should not be unique neither primary key. Cause issues when running the app.     
         # Create your model instance here and populate fields
-        populate_books = BookDetails(book_name="The History of Jazz", ISBN="9780190087210", book_description="An updated new edition of Ted Gioia's universally acclaimed history of jazz, with a wealth of new insight on this music's past, present, and future.",
-                                     book_price=24.95, author="Ted Gioia", genre="Music", year_published=2021, copies_sold=58042)
-
-
+        # populate_books = BookDetails(book_name="The History of Jazz", ISBN="9780190087210", book_description="An updated new edition of Ted Gioia's universally acclaimed history of jazz, with a wealth of new insight on this music's past, present, and future.",
+        #                              book_price=24.95, author="Ted Gioia", genre="Music", year_published=2021, copies_sold=58042)
+        
         # Add your values to the database here
         db.session.add(populate_books)
-
-
-
 
         # It commits or saves all fileds to the database
         db.session.commit()
@@ -82,6 +81,7 @@ app.register_blueprint(browse)
 # Route for module 4
 app.register_blueprint(book_details)
 
-
 # Route for module 5
-#app.register_blueprint(your_route)
+
+# Route for module 6
+app.register_blueprint(wishlist_management)
