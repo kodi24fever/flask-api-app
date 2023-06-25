@@ -42,7 +42,6 @@ with app.app_context():
 
 
 
-
         # It commits or saves all fileds to the database
         db.session.commit()
     
