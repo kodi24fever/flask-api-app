@@ -40,3 +40,7 @@ class BookDetails(db.Model):
 # Database Model for Feature 5:
 
 # Databse Model for Feature 6:
+class Wishlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer)
+    name = db.Column(db.String)
