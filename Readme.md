@@ -16,6 +16,8 @@ Any Text Editor of your choice:
  - [Visual Studio Code](https://code.visualstudio.com/download)
  - [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows)
 
+ </br>
+
  
 ## Installation
 
@@ -30,7 +32,7 @@ Any Text Editor of your choice:
 `(.venv) PS C:\Users\defaultUser\Desktop\flask-api-app>` on your terminal.
  3. Once environment is activated you can install the requirements including flask `pip install -r requirements.txt`
 
-## How to run the app
+## How to run the app (DEPECRATED)
 The app contains 5 folder for each rest api.
 
  1. Change directory to your respective rest api folder or create a new one.
@@ -45,6 +47,75 @@ The app contains app.py file that works as a navigation bar where you can change
  2. Run `flask --app app.py run --debug` and start editing your file.
  3. Go to `localhost:5000` and you should see a welcome message and links to your porject url.
  4. Click your project link button or go to `localhost:5000/your-endpoint-name` and you should see a welcome message.
+
+ </br>
+
+
+## Creating Database Models using Flask-SQLAlchemy or commonly know "DB Tables"
+
+The app uses Flask-SQLAclhemy to handle the insertion of new tables and their content to a SQLite database. Follow these steps to create new content to the database.
+
+
+#### Creating Your First DB Model or Table
+
+1. Go to database.py in root directory and create a python class with `db.Model` as a parameter. Example: `class  BookDetails(db.Model):`
+
+2. Start adding the table attributes inside the class. Example: 
+
+```python
+ISBN = db.Column(db.Integer)
+book_description = db.Column(db.String)
+```
+
+4. You should have something similar to this:
+```python
+# Databse Model Sample:
+
+class BookDetails(db.Model):
+	book_name = db.Column(db.String, primary_key=True)
+	ISBN = db.Column(db.Integer)
+	book_description = db.Column(db.String)
+	book_price = db.Column(db.Float)
+	author = db.Column(db.String)
+	genre = db.Column(db.String)
+	year_published = db.Column(db.Integer)
+	copies_sold = db.Column(db.Integer)
+```
+
+#### Inserting Dummy Data
+1. Add your class name in app.py
+```python
+from  database  import  db,migrate,BooksTesting, BookDetails,[Your_Class_Name]
+```
+2. Inside the try clause, pass the parameters needed for your class and save the instance in a new variable.
+  ```python
+newInstance = My_Class_Name(passing argumments ....)
+```
+3. Add the model to the session. This will create a table in the database with all the dummy data.
+  ```python
+db.session.add(newInstance)
+```
+
+#### Showing Data
+At this point you should be able to query all data, after importing it  in your route using the following sample line:
+  ```python
+myData= MyDBModel.query.all()
+```
+
+
+</br>
+
+# Doing the Migrations
+Flask-Migration was added to the app in case developers want to update their models. In order to do so do the following:
+1. Install the model if it is not already installed.
+`pip install -r requirements.txt`
+2. Make the changes in your DB Model class.
+3. Open a new terminal window and type `flask db migrate -m "explain_your_migration"`
+4. Upgrade your database table`flask db upgrade`
+5. (Optional) Type `flask db --help` to look all the options
+
+
+</br>
 
 
 # Important Note related to adding your files to app.py
