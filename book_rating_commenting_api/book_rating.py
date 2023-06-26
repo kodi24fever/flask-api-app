@@ -1,16 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Blueprint, request, jsonify
 from database import db, BookRatingComment
 
-app = Flask(__name__)
+book_rating = Blueprint('book_rating', __name__)
 
-class BookRatingComment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.String)
-    user_id = db.Column(db.Integer)
-    rating = db.Column(db.Integer)
-    comment = db.Column(db.String)
-
-@app.route("/book-rating-comment", methods=['POST']) # API route
+@book_rating.route("/book_rating", methods=['POST']) # API route
 def add_book_rating_comment():
     book_name = request.json['book_name']
     user_id = request.json['user_id']
@@ -29,7 +22,7 @@ def add_book_rating_comment():
 
     return jsonify({'message': 'Book rating and comment added successfully'})
 
-@app.route("/book-rating-comment/<book_name>", methods=['GET'])
+@book_rating.route("/book_rating/<book_name>", methods=['GET'])
 def get_book_rating_comments(book_name):
     book_rating_comments = BookRatingComment.query.filter_by(book_name=book_name).all()
 
