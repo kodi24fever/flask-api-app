@@ -2,6 +2,7 @@ import random
 import string
 from flask import Flask
 from book_browsing_sorting_api.browse import browse
+from book_rating_commenting_api.book_rating import app as book_rating_comment
 from flask_sqlalchemy import SQLAlchemy
 from database import Wishlist, db,migrate, BooksTesting, BookDetails
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
@@ -81,6 +82,7 @@ app.register_blueprint(browse)
 app.register_blueprint(book_details)
 
 # Route for module 5
+app.register_blueprint(book_rating_comment)
 
 # Route for module 6
 app.register_blueprint(wishlist_management)
