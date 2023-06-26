@@ -38,6 +38,13 @@ class BookDetails(db.Model):
 
 
 # Database Model for Feature 5:
+class BookRatingComment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    book_name = db.Column(db.String)
+    user_id = db.Column(db.Integer)
+    rating = db.Column(db.Integer)
+    comment = db.Column(db.String)
+
 
 # Databse Model for Feature 6:
 class Wishlist(db.Model):
