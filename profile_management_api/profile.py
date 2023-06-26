@@ -7,7 +7,7 @@ profile = Blueprint('profile', __name__)
 @profile.route("/profile", methods=['GET']) # api name
 
 # sample function to create an endpoint which should return a json format
-def userDetails():
+def userProfile():
     users = UserProfile.query.all()
 
     for user in users:
