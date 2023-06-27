@@ -8,6 +8,7 @@ from database import Wishlist, db,migrate, BooksTesting, BookDetails
 from book_details_api.book_details import book_details
 from book_rating_commenting_api.book_rating import book_rating
 from wishlist_management_api.wishlist_management import wishlist_management
+from profile_management_api.profile import profile
 
 # this part is the navigation bar to change between urls
 app = Flask(__name__)
@@ -73,7 +74,7 @@ app.register_blueprint(browse)
 
 '''
 # Route for module 2
-#app.register_blueprint(your_route)
+app.register_blueprint(profile)
 
 # Route for module 3
 #app.register_blueprint(your_route)
