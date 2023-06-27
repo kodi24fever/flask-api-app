@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from database import Wishlist, db,migrate, BooksTesting, BookDetails
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 from book_details_api.book_details import book_details
+from book_rating_commenting_api.book_rating import book_rating
 from wishlist_management_api.wishlist_management import wishlist_management
 from profile_management_api.profile import profile
 
@@ -82,6 +83,7 @@ app.register_blueprint(profile)
 app.register_blueprint(book_details)
 
 # Route for module 5
+app.register_blueprint(book_rating)
 
 # Route for module 6
 app.register_blueprint(wishlist_management)

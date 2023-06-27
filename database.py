@@ -11,6 +11,7 @@ class BooksTesting(db.Model):
     name = db.Column(db.String(50))
     book_detail = db.Column(db.String(50))
 
+
 '''
     Below here you can create the model or table for the database.
     The python class is your model name.
@@ -44,6 +45,13 @@ class BookDetails(db.Model):
 
 
 # Database Model for Feature 5:
+class BookRatingComment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    book_name = db.Column(db.String)
+    user_id = db.Column(db.Integer)
+    rating = db.Column(db.Integer)
+    comment = db.Column(db.String)
+
 
 # Databse Model for Feature 6:
 class Wishlist(db.Model):
