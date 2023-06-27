@@ -42,7 +42,6 @@ with app.app_context():
         
         # Add your values to the database here
         db.session.add(populate_books)
-        
         # It commits or saves all fileds to the database
         db.session.commit()
     
