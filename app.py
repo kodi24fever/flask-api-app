@@ -8,6 +8,7 @@ from database import Wishlist, db,migrate, BooksTesting, BookDetails
 from book_details_api.book_details import book_details
 from book_rating_commenting_api.book_rating import book_rating
 from wishlist_management_api.wishlist_management import wishlist_management
+from profile_management_api.profile import profile
 
 # this part is the navigation bar to change between urls
 app = Flask(__name__)
@@ -53,7 +54,7 @@ with app.app_context():
 @app.route("/") # api name
 # sample function to create an endpoint which should return a json format
 def index():
-    return "<h1>Hello. <br> This is index page</h1> <a href='/browse'>Browse API</a> <br><br> <a href='/profile'>Profile Managment API</a> <br><br> <a href='/shopping'>Shopping API</a> <br><br> <a href='/book-details'>Book Details API</a> <br><br> <a href='/book-rating'>Book Rating API</a>"
+    return "<h1>Hello. <br> This is index page</h1> <a href='/browse'>Browse API</a> <br><br> <a href='/profile'>Profile Managment API</a> <br><br> <a href='/shopping'>Shopping API</a> <br><br> <a href='/book-details'>Book Details API</a> <br><br> <a href='/book-rating'>Book Rating API</a><br><br><a href='/get_all_wishlist'>Wishlist API</a> <br><br>"
 
 
 
@@ -73,7 +74,7 @@ app.register_blueprint(browse)
 
 '''
 # Route for module 2
-#app.register_blueprint(your_route)
+app.register_blueprint(profile)
 
 # Route for module 3
 #app.register_blueprint(your_route)
