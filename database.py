@@ -72,3 +72,8 @@ class Wishlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer)
     name = db.Column(db.String)
+
+class BooksInWishlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    wishlistId = db.Column(db.Integer)
+    BookId = db.Column(db.Integer)
