@@ -1,4 +1,7 @@
-# Ignore database file
+# Ignore not required files
+.idea/
+
+
 
 
 # Byte-compiled / optimized / DLL files
