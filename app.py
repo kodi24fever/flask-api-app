@@ -70,7 +70,7 @@ app.register_blueprint(browse)
 
 
 '''
-    Uncomment app.resister and change your file name 
+    Uncomment app.register and change your file name 
 
 '''
 # Route for module 2
