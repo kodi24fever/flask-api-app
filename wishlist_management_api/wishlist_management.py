@@ -88,7 +88,7 @@ def get_all_wishlist():
     return render_template('wishlist_list.html', wishlists=serialized_wishlists)
     
 # Delete a Wishlist 
-@wishlist_management.route('/delete_book/<Sing:book_name>', methods=['DELETE'])
+@wishlist_management.route('/delete_book/<string:book_name>', methods=['DELETE'])
 def delete_book(book_name):
     book = BooksInWishlist.query.get(book_name)
     if book:

@@ -12,6 +12,20 @@ class BooksTesting(db.Model):
     book_detail = db.Column(db.String(50))
 
 
+class BookBrowse(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    author = db.Column(db.String(50))
+    rating = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    copies_sold = db.Column(db.Integer)
+
+
+class BookBrowseGenre(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    genre_name = db.Column(db.String(50))
+
+
 '''
     Below here you can create the model or table for the database.
     The python class is your model name.
