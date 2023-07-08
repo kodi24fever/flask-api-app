@@ -1,6 +1,7 @@
 # Ignore not required files
 .idea/
-
+myenv/
+.DS_Store
 
 
 
