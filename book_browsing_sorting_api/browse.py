@@ -19,7 +19,7 @@ def show_message():
 
 
 
-@browse.route("/top-sellers") # retrieve top sellers feature
+@browse.route("/browse-top-sellers") # retrieve top sellers feature
 
 # Return top 10 books that have sold the most copies, parameters: None
 def getTopSellers():
@@ -28,7 +28,7 @@ def getTopSellers():
 
 
 
-@browse.route("/books-by-rating") # retrieve books by rating feature
+@browse.route("/browse-books-by-rating") # retrieve books by rating feature
 
 # Return top 10 books that have sold the most copies, parameters: Rating, Response: list of books in Json Format
 def getBooksByRating():
