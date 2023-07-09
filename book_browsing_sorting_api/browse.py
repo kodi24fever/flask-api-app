@@ -5,7 +5,6 @@ browse = Blueprint('browse', __name__)
 
 @browse.route("/browse") # api name
 
-
 # sample function to create an endpoint which should return a json format
 def show_message():
     # querying the all the books using flask-sqlalchemy
@@ -22,7 +21,16 @@ def show_message():
 
 @browse.route("/top-sellers") # retrieve top sellers feature
 
-# Return top 10 books that have sold the most copies
+# Return top 10 books that have sold the most copies, parameters: None
 def getTopSellers():
 
     return "This endpoint returns top sellers"
+
+
+
+@browse.route("/books-by-rating") # retrieve books by rating feature
+
+# Return top 10 books that have sold the most copies, parameters: Rating, Response: list of books in Json Format
+def getBooksByRating():
+
+    return "This endpoint returns books by rating"
