@@ -17,3 +17,12 @@ def show_message():
         print("name: " + book.name)
         #print("detail: " + book.book_detail)
     return render_template("sample.html", title="sample", books=books)
+
+
+
+@browse.route("/top-sellers") # retrieve top sellers feature
+
+# Return top 10 books that have sold the most copies
+def getTopSellers():
+
+    return "This endpoint returns top sellers"
