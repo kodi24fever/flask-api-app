@@ -17,5 +17,5 @@ def userDetails():
         print("Email: " + user.email)
         print("Home Address: " + user.home_address)
 
-    return render_template("user_details_sample.html", title="User Details", users=users)
+    return render_template("user_details.html", title="User Details", users=users)
     #return "<h1>Hello. <br> If you see this it means your app is working. <br>This is a sample get request.  </h1>"

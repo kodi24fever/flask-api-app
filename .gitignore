@@ -1,4 +1,8 @@
-# Ignore database file
+# Ignore not required files
+.idea/
+myenv/
+.DS_Store
+
 
 
 # Byte-compiled / optimized / DLL files
