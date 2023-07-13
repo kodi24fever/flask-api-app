@@ -19,7 +19,7 @@ def addBooksToBookBrowse():
 @browse.route("/browse") # api name
 
 # sample function to create an endpoint which should return a json format
-def show_message():
+def index():
     # querying the all the books using flask-sqlalchemy
     books = BookBrowse.query.all()
 
@@ -37,7 +37,7 @@ def show_message():
     # except:
     #     db.session.rollback()
 
-    return render_template("browse.html", title="sample", books=books)
+    return render_template("browse.html", title="Browse and Sorting API", books=books)
 
 
 
@@ -46,7 +46,9 @@ def show_message():
 # Return books by genre, parameters: Genre
 def getBooksByGenre():
 
-    return "This endpoint returns books by genre"
+    books = BookBrowse.query.all()
+
+    return render_template("browse_books_by_genre.html", title="Browse By Genre", books=books)
 
 
 @browse.route("/browse-top-sellers") # retrieve top sellers feature
