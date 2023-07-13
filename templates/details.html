@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+            {% for book_details in get_details_ISBN %}
+            <tr>
+                <li>Book's Title: {{ book_details.book_name }}</li>
+                <li>ISBN: {{ book_details.ISBN }}</li>
+                <li>Description: {{ book_details.book_description }} </li>
+                <li>Price: ${{ book_details.book_price }}</li>
+                <li>Author: {{ book_details.author }}</li>
+                <li>Genre: {{ book_details.genre }}</li>
+                <li>Year of Publication: {{ book_details.year_published }}</li>
+                <li>Copies Sold: {{ book_details.copies_sold }}</li>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
