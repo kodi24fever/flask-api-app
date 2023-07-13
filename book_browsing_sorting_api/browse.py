@@ -3,6 +3,19 @@ from database import db, BooksTesting, BookBrowse
 
 browse = Blueprint('browse', __name__)
 
+
+def addBooksToBookBrowse():
+    try:
+        db.session.add(BookBrowse(title="Star Wars", author="John Ceena", rating=9, price=20.54, copies_sold=20, genre_name="Fantasy"))
+
+        # Commit all changes to database
+        db.session.commit()
+
+    except Exception as e:
+        print( f'There was an error: {str(e)}')
+
+
+
 @browse.route("/browse") # api name
 
 # sample function to create an endpoint which should return a json format
@@ -18,13 +31,13 @@ def show_message():
         # db.session.delete(book)
         # print(0)
     
-    try:
-        db.session.query(BooksTesting).delete()
-        db.session.commit()
-    except:
-        db.session.rollback()
+    # try:
+    #     db.session.query(BooksTesting).delete()
+    #     db.session.commit()
+    # except:
+    #     db.session.rollback()
 
-    return render_template("sample.html", title="sample", books=books)
+    return render_template("browse.html", title="sample", books=books)
 
 
 

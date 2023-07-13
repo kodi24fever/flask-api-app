@@ -11,7 +11,7 @@ class BooksTesting(db.Model):
     name = db.Column(db.String(50))
     book_detail = db.Column(db.String(50))
 
-
+# Model for Feature 1: Book Sorting (production)
 class BookBrowse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))

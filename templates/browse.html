@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+      crossorigin="anonymous"
+    />
+    <script>
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Hello. <br> If you see this it means your app is working. <br>This is a sample get request.</h1>
+        <br>
+        <br>
+        <h4>Sample Data Showing From Database</h4>
+    
+        <ul>
+            {% for book in books %}
+                <li>id: {{ book.id }}</li>
+                <li>name: {{ book.title }}</li>
+            {% endfor %}
+        </ul>
+  </div>
+  </body>
+</html>
