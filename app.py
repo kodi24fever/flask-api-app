@@ -32,7 +32,8 @@ with app.app_context():
 
     try:
         # Populate Fields
-        populate_books = BooksTesting(name="Star Wars", book_detail="Hello detail")
+        # populate_books = BooksTesting(name="Star Wars", book_detail="Hello detail")
+
         for i in range(6):
             wishlist_db = Wishlist(userId=i, name=''.join(random.choices(string.ascii_letters, k=5)))
             db.session.add(wishlist_db)
@@ -42,7 +43,7 @@ with app.app_context():
         #                              book_price=24.95, author="Ted Gioia", genre="Music", year_published=2021, copies_sold=58042)
         
         # Add your values to the database here
-        db.session.add(populate_books)
+        # db.session.add(populate_books)
         # It commits or saves all fileds to the database
         db.session.commit()
     
