@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from database import db, BooksTesting, BookBrowse
+import json
 
 browse = Blueprint('browse', __name__)
 
@@ -48,7 +49,36 @@ def getBooksByGenre():
 
     books = BookBrowse.query.all()
 
-    return render_template("browse_books_by_genre.html", title="Browse By Genre", books=books)
+    if books:
+
+        jsonBooks = []
+
+        for book in books:
+            
+            if book:
+                jsonBooks.append({
+                    'id': book.id,
+                    'title': book.title,
+                    'author': book.author,
+                    'rating': book.rating,
+                    'price': book.price,
+                    'copies_sold': book.copies_sold,
+                    'genre_name': book.genre_name
+                })
+
+        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = json.dumps(jsonBooks))
+                
+    else:
+
+        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = jsonify({'books': 'There is no data to show'}))
+
+
+
+    # jsonBooks = jsonify({'books': books})
+
+
+
+    
 
 
 @browse.route("/browse-top-sellers") # retrieve top sellers feature
