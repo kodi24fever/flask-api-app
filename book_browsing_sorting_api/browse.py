@@ -70,12 +70,12 @@ def getTopSellers():
                     'genre_name': topSeller.genre_name
                 })
 
-        return json.dumps(jsonTopSellers)
+        return render_template("browse_top_sellers.html", title="Browse 10 Top Sellers", books = json.dumps(jsonTopSellers))
                 
     else:
         
 
-        return json.dumps({'topSellers': 'There is no data to show'})
+        return render_template("browse_top_sellers.html", title="Browse 10 Top Sellers", books = json.dumps({'topSellers': 'There is no data to show'}))
 
 
 
