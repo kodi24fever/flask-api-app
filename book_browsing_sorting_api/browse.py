@@ -48,24 +48,38 @@ def getBooksByGenre():
 
 
 @browse.route("/browse-top-sellers") # retrieve top sellers feature
-
 # Return top 10 books that have sold the most copies, parameters: None
 def getTopSellers():
 
     topSellers = BookBrowse.query.order_by(BookBrowse.copies_sold.desc()).limit(10).all()
 
 
-    for topSeller in topSellers:
+    jsonTopSellers = []
 
-        print(topSeller.copies_sold)
-        print('\n')
+    if topSellers:
 
-    return "This endpoint returns top sellers"
+        for topSeller in topSellers:
+
+                jsonTopSellers.append({
+                    'id': topSeller.id,
+                    'title': topSeller.title,
+                    'author': topSeller.author,
+                    'rating': topSeller.rating,
+                    'price': topSeller.price,
+                    'copies_sold': topSeller.copies_sold,
+                    'genre_name': topSeller.genre_name
+                })
+
+        return json.dumps(jsonTopSellers)
+                
+    else:
+        
+
+        return json.dumps({'topSellers': 'There is no data to show'})
 
 
 
 @browse.route("/browse-books-by-rating") # retrieve books by rating feature
-
 # Return top 10 books that have sold the most copies, parameters: Rating, Response: list of books in Json Format
 def getBooksByRating():
 
