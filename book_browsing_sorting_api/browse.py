@@ -18,44 +18,24 @@ def addBooksToBookBrowse():
 
 
 @browse.route("/browse") # api name
-
-# sample function to create an endpoint which should return a json format
+# index reqquest for browse feature
 def index():
-    # querying the all the books using flask-sqlalchemy
-    books = BookBrowse.query.all()
-
-    # Printing all books' name
-    # for book in books:
-        # print("id: " + str(book.id))
-        # print("name: " + book.name)
-        # print("detail: " + book.book_detail)
-        # db.session.delete(book)
-        # print(0)
-    
-    # try:
-    #     db.session.query(BooksTesting).delete()
-    #     db.session.commit()
-    # except:
-    #     db.session.rollback()
-
-    return render_template("browse.html", title="Browse and Sorting API", books=books)
-
+    return render_template("browse.html", title="Browse and Sorting API")
 
 
 @browse.route("/browse-books-by-genre") # retrieve books by genre
-
 # Return books by genre, parameters: Genre
 def getBooksByGenre():
 
+    # Get parameters from template
     genre = request.args.get('genre')
 
-
+    # Query BookBrowse
     books = BookBrowse.query.filter_by(genre_name=genre).all()
 
+    jsonBooks = []
+
     if books:
-
-        jsonBooks = []
-
         for book in books:
             
             if book:
@@ -72,16 +52,10 @@ def getBooksByGenre():
         return render_template("browse_books_by_genre.html", title="Browse By Genre", books = json.dumps(jsonBooks))
                 
     else:
+        
 
-        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = {'books': 'There is no data to show'})
+        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = json.dumps({'books': 'There is no data to show'}))
 
-
-
-    # jsonBooks = jsonify({'books': books})
-
-
-
-    
 
 
 @browse.route("/browse-top-sellers") # retrieve top sellers feature
