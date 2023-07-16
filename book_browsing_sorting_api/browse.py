@@ -1,20 +1,9 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 from database import db, BooksTesting, BookBrowse
 import json
+import random
 
 browse = Blueprint('browse', __name__)
-
-
-def addBooksToBookBrowse():
-    try:
-        db.session.add(BookBrowse(title="Star Wars", author="John Ceena", rating=9, price=20.54, copies_sold=20, genre_name="Fantasy"))
-
-        # Commit all changes to database
-        db.session.commit()
-
-    except Exception as e:
-        print( f'There was an error: {str(e)}')
-
 
 
 @browse.route("/browse") # api name
@@ -63,6 +52,14 @@ def getBooksByGenre():
 # Return top 10 books that have sold the most copies, parameters: None
 def getTopSellers():
 
+    topSellers = BookBrowse.query.order_by(BookBrowse.copies_sold.desc()).limit(10).all()
+
+
+    for topSeller in topSellers:
+
+        print(topSeller.copies_sold)
+        print('\n')
+
     return "This endpoint returns top sellers"
 
 
@@ -76,3 +73,29 @@ def getBooksByRating():
 
 
 
+
+
+
+# Functions separated to the features
+def addBooksToBookBrowse():
+    try:
+        db.session.add(BookBrowse(title="Mad Max", author="Tom Hardy", rating=5, price=11.54, copies_sold=random(1, 1000), genre_name="Action"))
+        db.session.add(BookBrowse(title="The Black House", author="Stephen King", rating=5, price=25.54, copies_sold=random(1, 1000), genre_name="Horror"))
+        db.session.add(BookBrowse(title="Another Day", author="Leonel Squirrel", rating=1, price=22.30, copies_sold=random(1, 1000), genre_name="Fantasy"))
+
+        # Commit all changes to database
+        db.session.commit()
+
+        return ''
+
+
+    except Exception as e:
+        print( f'There was an error: {str(e)}')
+
+        return ''
+    
+
+# def deleteBooks():
+#     db.session.query(BookBrowse).delete()
+#     db.session.commit()
+#     return ''
