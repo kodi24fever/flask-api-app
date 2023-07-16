@@ -53,7 +53,6 @@ def getTopSellers():
 
     topSellers = BookBrowse.query.order_by(BookBrowse.copies_sold.desc()).limit(10).all()
 
-
     jsonTopSellers = []
 
     if topSellers:
@@ -73,17 +72,36 @@ def getTopSellers():
         return render_template("browse_top_sellers.html", title="Browse 10 Top Sellers", books = json.dumps(jsonTopSellers))
                 
     else:
-        
-
         return render_template("browse_top_sellers.html", title="Browse 10 Top Sellers", books = json.dumps({'topSellers': 'There is no data to show'}))
 
 
 
 @browse.route("/browse-books-by-rating") # retrieve books by rating feature
-# Return top 10 books that have sold the most copies, parameters: Rating, Response: list of books in Json Format
+# Return books with a particular rating or higher, parameters: Rating, Response: list of books in Json Format
 def getBooksByRating():
 
-    return "This endpoint returns books by rating"
+    user_rating = request.args.get('rating')
+
+    booksByRating = BookBrowse.query.filter(BookBrowse.rating >= int(user_rating)).order_by(BookBrowse.rating).all()
+
+    jsonBooksByRating = []
+
+    if booksByRating:
+        for book in booksByRating:
+                jsonBooksByRating.append({
+                    'id': book.id,
+                    'title': book.title,
+                    'author': book.author,
+                    'rating': book.rating,
+                    'price': book.price,
+                    'copies_sold': book.copies_sold,
+                    'genre_name': book.genre_name
+                })
+
+        return render_template("browse_by_rating.html", title="Browse By Rating", books = json.dumps(jsonBooksByRating))
+                
+    else:
+        return render_template("browse_by_rating.html", title="Browse By Rating", books = json.dumps({'booksByRating': 'There are no books with that rating or higher'}))
 
 
 
