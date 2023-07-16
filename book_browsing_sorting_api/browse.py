@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from database import db, BooksTesting, BookBrowse
 import json
 
@@ -47,7 +47,10 @@ def index():
 # Return books by genre, parameters: Genre
 def getBooksByGenre():
 
-    books = BookBrowse.query.all()
+    genre = request.args.get('genre')
+
+
+    books = BookBrowse.query.filter_by(genre_name=genre).all()
 
     if books:
 
@@ -70,7 +73,7 @@ def getBooksByGenre():
                 
     else:
 
-        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = jsonify({'books': 'There is no data to show'}))
+        return render_template("browse_books_by_genre.html", title="Browse By Genre", books = {'books': 'There is no data to show'})
 
 
 
