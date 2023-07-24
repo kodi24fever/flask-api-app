@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Author's Details</title>
+</head>
+<body>
+    <h1>List of Books by Author in this Database</h1>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+            {% for book_details in get_details_author %}
+            <tr>
+                <li>Book's Title: {{ book_details.book_name }}</li>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
