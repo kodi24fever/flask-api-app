@@ -58,6 +58,12 @@ class BookDetails(db.Model):
     year_published = db.Column(db.Integer)
     copies_sold = db.Column(db.Integer)
 
+class AuthorDetails(db.Model):
+    author_fn = db.Column(db.String, primary_key=True)
+    author_ln = db.Column(db.String)
+    biography = db.Column(db.String)
+    publisher = db.Column(db.String)
+
 
 # Database Model for Feature 5:
 class BookRatingComment(db.Model):
