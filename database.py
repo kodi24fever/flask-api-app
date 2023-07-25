@@ -38,13 +38,15 @@ class BookBrowseGenre(db.Model):
 
 
 # Database Model for Feature 2:
-class UserProfile(db.Model):
-    Id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    password = db.Column(db.String)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
     name = db.Column(db.String)
     email = db.Column(db.String)
     home_address = db.Column(db.String)
+
 # Databse Model for Feature 3:
 
 # Databse Model for Feature 4:

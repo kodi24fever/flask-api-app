@@ -4,7 +4,7 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    <h1>User Details</h1>
+    <h1>Welcome to Profile Management API</h1>
     <table>
         <thead>
             <tr>
@@ -27,5 +27,60 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <h2>Create a User</h2>
+    <form action="/create_user" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <br>
+        <label for="home_address">Home Address:</label>
+        <input type="text" id="home_address" name="home_address">
+        <br>
+        <button type="submit">Create User</button>
+    </form>
+
+    <h2>Update User Details</h2>
+    <form action="/update_user" method="POST">
+        <label for="username_update">Username:</label>
+        <input type="text" id="username_update" name="username" required>
+        <br>
+        <label for="name_update">Name:</label>
+        <input type="text" id="name_update" name="name">
+        <br>
+        <label for="email_update">Email:</label>
+        <input type="email" id="email_update" name="email">
+        <br>
+        <label for="home_address_update">Home Address:</label>
+        <input type="text" id="home_address_update" name="home_address">
+        <br>
+        <button type="submit">Update User</button>
+    </form>
+
+    <h2>Create Credit Card</h2>
+    <form action="/create_credit_card" method="POST">
+        <label for="username_cc">Username:</label>
+        <input type="text" id="username_cc" name="username" required>
+        <br>
+        <label for="card_number">Card Number:</label>
+        <input type="text" id="card_number" name="card_number" required>
+        <br>
+        <label for="cardholder_name">Cardholder Name:</label>
+        <input type="text" id="cardholder_name" name="cardholder_name" required>
+        <br>
+        <label for="expiration_date">Expiration Date:</label>
+        <input type="text" id="expiration_date" name="expiration_date" required>
+        <br>
+        <button type="submit">Create Credit Card</button>
+    </form>
 </body>
 </html>
+
