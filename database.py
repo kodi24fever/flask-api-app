@@ -74,14 +74,16 @@ class BookRatingComment(db.Model):
 
 # Database Model for Feature 6: 
 class Wishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    #Foreign Key
     userId = db.Column(db.Integer, db.ForeignKey('user_profile.Id'), name='fk_wishlist_userid')
     name = db.Column(db.String)
     user_profile = db.relationship("UserProfile")
 
 class BooksInWishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    wishlistId = db.Column(db.Integer, db.ForeignKey('wishlist.id'), name='fk_books_in_wishlist_wishlistId')
-    book_name = db.Column(db.String, db.ForeignKey('book_details.book_name'), name='fk_books_in_wishlist_book_name')
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    #Foreign Key
+    wishlistId = db.Column(db.Integer, db.ForeignKey('wishlist.id'), name='fk_books_in_wishlist_wishlistId') #Foreign Key
+    bookId = db.Column(db.Integer, db.ForeignKey('book_browse.id'), name='fk_books_in_wishlist_bookId')
     wishlist = db.relationship("Wishlist", backref="books_in_wishlist")
-    book = db.relationship("BookDetails", foreign_keys=[book_name])
+    book = db.relationship("BookBrowse", foreign_keys=[bookId])

@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Wishlist List</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Wishlist List</h1>
-    <table class="table table-borderless">
-        <thead class="thead-dark">
-            <tr> 
-                <th>Wishlist ID</th>
-                <th>User ID</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container-md">
+        {% if wishlists %}
             {% for wishlist in wishlists %}
-            <tr>
-                <td>{{ wishlist.id }}</td>
-                <td>{{ wishlist.userId }}</td>
-                <td>{{ wishlist.name }}</td>
-            </tr>
+                <h1 class="mb-4">{{ wishlist.name }}</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Book Name</th>
+                            <th>Rating</th>
+                            <th>Book Price</th>
+                            <th>Author</th>
+                            <th>Copies Sold</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in wishlist.books %}
+                            <tr>
+                                <td>{{ book.book_name }}</td>
+                                <td>{{ book.rating }}</td>
+                                <td>{{ book.book_price }}</td>
+                                <td>{{ book.author }}</td>
+                                <td>{{ book.copies_sold }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% endfor %}
-        </tbody>
-    </table>
+        {% else %}
+            <p>No wishlists found.</p>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery (optional but required for some Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
