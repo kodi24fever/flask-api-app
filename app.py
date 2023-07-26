@@ -34,9 +34,9 @@ with app.app_context():
         # Populate Fields
         # populate_books = BooksTesting(name="Star Wars", book_detail="Hello detail")
 
-        # for i in range(6):
-        #     wishlist_db = Wishlist(userId=i, name=''.join(random.choices(string.ascii_letters, k=5)))
-        #     db.session.add(wishlist_db)
+        for i in range(6):
+            wishlist_db = Wishlist(userId=i, name=''.join(random.choices(string.ascii_letters, k=5)))
+            db.session.add(wishlist_db)
         # TODO: Name should not be unique neither primary key. Cause issues when running the app.     
         # Create your model instance here and populate fields
         # populate_books = BookDetails(book_name="The History of Jazz", ISBN="9780190087210", book_description="An updated new edition of Ted Gioia's universally acclaimed history of jazz, with a wealth of new insight on this music's past, present, and future.",

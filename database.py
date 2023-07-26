@@ -11,7 +11,7 @@ class BooksTesting(db.Model):
     name = db.Column(db.String(50))
     book_detail = db.Column(db.String(50))
 
-
+# Model for Feature 1: Book Sorting (production)
 class BookBrowse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
@@ -19,6 +19,7 @@ class BookBrowse(db.Model):
     rating = db.Column(db.Integer)
     price = db.Column(db.Float)
     copies_sold = db.Column(db.Integer)
+    genre_name = db.Column(db.String(50))
 
 
 class BookBrowseGenre(db.Model):
@@ -72,16 +73,14 @@ class BookRatingComment(db.Model):
     rating = db.Column(db.Integer)
     comment = db.Column(db.String)
 
-# Database Model for Feature 6: 
+
+# Databse Model for Feature 6:
 class Wishlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey('user_profile.Id'), name='fk_wishlist_userid')
+    userId = db.Column(db.Integer)
     name = db.Column(db.String)
-    user_profile = db.relationship("UserProfile")
 
 class BooksInWishlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    wishlistId = db.Column(db.Integer, db.ForeignKey('wishlist.id'), name='fk_books_in_wishlist_wishlistId')
-    book_name = db.Column(db.String, db.ForeignKey('book_details.book_name'), name='fk_books_in_wishlist_book_name')
-    wishlist = db.relationship("Wishlist", backref="books_in_wishlist")
-    book = db.relationship("BookDetails", foreign_keys=[book_name])
+    wishlistId = db.Column(db.Integer)
+    BookId = db.Column(db.Integer)
