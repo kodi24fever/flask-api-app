@@ -23,6 +23,7 @@ def add_wishlist():
     userId = request.json['user_id']
     name = request.json['name']
     existing_wishlists_count = Wishlist.query.filter_by(userId=userId).count()
+    #Check if the number of wishlist the user has is equal or less than 3 
     if existing_wishlists_count >= 3:
         return jsonify({'message': 'User already has 3 wishlists. Cannot create more. Sorry :('}), 403
 
