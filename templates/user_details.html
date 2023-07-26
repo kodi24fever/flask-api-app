@@ -5,28 +5,6 @@
 </head>
 <body>
     <h1>Welcome to Profile Management API</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Home Address</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.home_address }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
     <h2>Create a User</h2>
     <form action="/create_user" method="POST">
@@ -83,4 +61,3 @@
     </form>
 </body>
 </html>
-
