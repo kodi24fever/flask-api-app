@@ -72,12 +72,6 @@ class BookRatingComment(db.Model):
     rating = db.Column(db.Integer)
     comment = db.Column(db.String)
 
-# Database Model for Feature 6: 
-class Wishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey('user_profile.Id'), name='fk_wishlist_userid')
-    name = db.Column(db.String)
-    user_profile = db.relationship("UserProfile")
 
 # Database Model for Feature 6: 
 class Wishlist(db.Model):
