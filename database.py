@@ -20,6 +20,7 @@ class BookBrowse(db.Model):
     price = db.Column(db.Float)
     copies_sold = db.Column(db.Integer)
     genre_name = db.Column(db.String(50))
+    publisher = db.Column(db.String(50))
 
 
 class BookBrowseGenre(db.Model):
