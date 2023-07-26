@@ -11,7 +11,7 @@ class BooksTesting(db.Model):
     name = db.Column(db.String(50))
     book_detail = db.Column(db.String(50))
 
-
+# Model for Feature 1: Book Sorting (production)
 class BookBrowse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
@@ -19,6 +19,8 @@ class BookBrowse(db.Model):
     rating = db.Column(db.Integer)
     price = db.Column(db.Float)
     copies_sold = db.Column(db.Integer)
+    genre_name = db.Column(db.String(50))
+    publisher = db.Column(db.String(50))
 
 
 class BookBrowseGenre(db.Model):
@@ -87,3 +89,4 @@ class BooksInWishlist(db.Model):
     bookId = db.Column(db.Integer, db.ForeignKey('book_browse.id'), name='fk_books_in_wishlist_bookId')
     wishlist = db.relationship("Wishlist", backref="books_in_wishlist")
     book = db.relationship("BookBrowse", foreign_keys=[bookId])
+
