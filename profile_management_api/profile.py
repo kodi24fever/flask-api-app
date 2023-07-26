@@ -6,7 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 profile = Blueprint('profile', __name__)
 
-@profile.route("/profile", methods=['GET'])
+
+@profile.route("/profile", methods=['GET']) # api name
+
+# sample function to create an endpoint which should return a json format
 def userDetails():
     users = User.query.all()
 
