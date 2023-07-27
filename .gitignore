@@ -568,3 +568,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+instance/database.db
