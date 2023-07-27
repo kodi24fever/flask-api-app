@@ -1,39 +1,44 @@
-from flask import Blueprint, request, jsonify
-from database import db, BookRatingComment
+from flask import Blueprint, request, render_template
+from database import db, BookBrowse, BookRatingComment, UserProfile
+from datetime import datetime
 
 book_rating = Blueprint('book_rating', __name__)
 
-@book_rating.route("/book_rating", methods=['POST']) # API route
-def add_book_rating_comment():
-    book_name = request.json['book_name']
-    user_id = request.json['user_id']
-    rating = request.json['rating']
-    comment = request.json['comment']
 
-    new_book_rating_comment = BookRatingComment(
-        book_name=book_name,
-        user_id=user_id,
-        rating=rating,
-        comment=comment,
-    )
+@book_rating.route("/book-rating", methods=['GET', 'POST'])
+def book_details_by_id():
+    # Retrieve book_id from the GET request or default to 8
+    book_id = request.args.get('book_id', default=8, type=int)
 
-    db.session.add(new_book_rating_comment)
-    db.session.commit()
+    book = BookBrowse.query.get(book_id)
 
-    return jsonify({'message': 'Book rating and comment added successfully'})
+    if not book:
+        return "Book not found", 404
 
-@book_rating.route("/book_rating/<book_name>", methods=['GET'])
-def get_book_rating_comments(book_name):
-    book_rating_comments = BookRatingComment.query.filter_by(book_name=book_name).all()
+    if request.method == 'POST':
+        user_id = request.form.get('user_id')
+        if not user_id:
+            return "Username is required to submit comments.", 400
 
-    serialized_book_rating_comments = [
-        {
-            'id': book_rating_comment.id,
-            'user_id': book_rating_comment.user_id,
-            'rating': book_rating_comment.rating,
-            'comment': book_rating_comment.comment,
-        }
-        for book_rating_comment in book_rating_comments
-    ]
+        comment = request.form.get('comment')
+        rating = request.form.get('rating')
 
-    return jsonify(serialized_book_rating_comments)
+        new_entry = BookRatingComment(
+            book_name=book.title,
+            user_id=user_id,
+            rating=rating if rating else None,
+            comment=comment if comment else None,
+            timestamp=datetime.now()
+        )
+        db.session.add(new_entry)
+        db.session.commit()
+
+    # Calculate average rating
+    avg_rating = db.session.query(db.func.avg(BookRatingComment.rating)) \
+        .join(BookBrowse, BookBrowse.title == BookRatingComment.book_name) \
+        .filter(BookBrowse.id == book.id).scalar()
+
+    # Retrieve all comments
+    comments = BookRatingComment.query.filter_by(book_name=book.title).all()
+
+    return render_template("book-rating.html", book=book, avg_rating=avg_rating, comments=comments)

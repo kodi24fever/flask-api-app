@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate # adding migrate
+from datetime import datetime
 
 db = SQLAlchemy()
 migrate = Migrate() # Initializes migrate object
@@ -69,10 +70,11 @@ class AuthorDetails(db.Model):
 # Database Model for Feature 5:
 class BookRatingComment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.String)
-    user_id = db.Column(db.Integer)
-    rating = db.Column(db.Integer)
-    comment = db.Column(db.String)
+    book_name = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.String, nullable=False)
+    rating = db.Column(db.Float, nullable=True)
+    comment = db.Column(db.String, nullable=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 # Databse Model for Feature 6:

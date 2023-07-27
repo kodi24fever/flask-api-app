@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Rating</title>
+</head>
+<body>
+    <h1>Get Book by ID</h1>
+    <form method="GET" action="/book-rating">
+        <input type="number" name="book_id" placeholder="Enter Book ID">
+        <input type="submit" value="Fetch Book">
+    </form>
+    <h1>{{ book.title }}</h1>
+    <form action="/book_rating" method="POST">
+        User ID: <input type="text" name="user_id"><br>
+        Rating (1-5): <input type="number" name="rating" min="1" max="5"><br>
+        Comment: <textarea name="comment"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Average Rating: {{ avg_rating }}</h2>
+
+    <h2>Comments:</h2>
+    <ul>
+    {% for comment in comments %}
+        <li>{{ comment.user_id }}: {{ comment.comment }} ({{ comment.timestamp }})</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
