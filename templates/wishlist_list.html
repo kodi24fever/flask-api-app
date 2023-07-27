@@ -8,21 +8,27 @@
 </head>
 <body>
     <h1>Wishlist List</h1>
-    <table class="table table-borderless">
-        <thead class="thead-dark">
-            <tr> 
-                <th>Wishlist ID</th>
-                <th>User ID</th>
-                <th>Name</th>
+    <table class="table table-hover">
+        <thead class="table table-hover">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Copies Sold</th>
             </tr>
         </thead>
         <tbody>
             {% for wishlist in wishlists %}
+            {% for book in wishlist.books %}
             <tr>
-                <td>{{ wishlist.id }}</td>
-                <td>{{ wishlist.userId }}</td>
-                <td>{{ wishlist.name }}</td>
+                <td>{{ book.book_name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.book_price }}</td>
+                <td>{{ book.rating }}</td>
+                <td>{{ book.copies_sold }}</td>
             </tr>
+            {% endfor %}
             {% endfor %}
         </tbody>
     </table>
