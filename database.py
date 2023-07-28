@@ -11,7 +11,7 @@ class BooksTesting(db.Model):
     name = db.Column(db.String(50))
     book_detail = db.Column(db.String(50))
 
-
+# Model for Feature 1: Book Sorting (production)
 class BookBrowse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
@@ -19,6 +19,8 @@ class BookBrowse(db.Model):
     rating = db.Column(db.Integer)
     price = db.Column(db.Float)
     copies_sold = db.Column(db.Integer)
+    genre_name = db.Column(db.String(50))
+    publisher = db.Column(db.String(50))
 
 
 class BookBrowseGenre(db.Model):
@@ -37,13 +39,27 @@ class BookBrowseGenre(db.Model):
 
 
 # Database Model for Feature 2:
-class UserProfile(db.Model):
-    Id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    password = db.Column(db.String)
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
     name = db.Column(db.String)
     email = db.Column(db.String)
     home_address = db.Column(db.String)
+
+    # Link to CreditCard model
+    credit_cards = db.relationship('CreditCard', backref='user', lazy=True)
+
+class CreditCard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    card_number = db.Column(db.String)
+    cardholder_name = db.Column(db.String)
+    expiration_date = db.Column(db.String)
+
+    # ForeignKey to User
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
 # Databse Model for Feature 3:
 
 # Databse Model for Feature 4:
@@ -74,16 +90,17 @@ class BookRatingComment(db.Model):
 
 
 # Database Model for Feature 6: 
-class Wishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    userId = db.Column(db.Integer, db.ForeignKey('user_profile.Id'), name='fk_wishlist_userid')
-    name = db.Column(db.String)
-    user_profile = db.relationship("UserProfile")
+# class Wishlist(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     userId = db.Column(db.Integer, db.ForeignKey('user_profile.Id'), name='fk_wishlist_userid')
+#     name = db.Column(db.String)
+#     user_profile = db.relationship("UserProfile")
 
-class BooksInWishlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    #Foreign Key (Wishlist)
-    wishlistId = db.Column(db.Integer, db.ForeignKey('wishlist.id'), name='fk_books_in_wishlist_wishlistId') #Foreign Key (BookBrowse)
-    bookId = db.Column(db.Integer, db.ForeignKey('book_browse.id'), name='fk_books_in_wishlist_bookId')
-    wishlist = db.relationship("Wishlist", backref="books_in_wishlist")
-    book = db.relationship("BookBrowse", foreign_keys=[bookId])
+# class BooksInWishlist(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     #Foreign Key (Wishlist)
+#     wishlistId = db.Column(db.Integer, db.ForeignKey('wishlist.id'), name='fk_books_in_wishlist_wishlistId') #Foreign Key (BookBrowse)
+#     bookId = db.Column(db.Integer, db.ForeignKey('book_browse.id'), name='fk_books_in_wishlist_bookId')
+#     wishlist = db.relationship("Wishlist", backref="books_in_wishlist")
+#     book = db.relationship("BookBrowse", foreign_keys=[bookId])
+

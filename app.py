@@ -3,11 +3,11 @@ import string
 from flask import Flask
 from book_browsing_sorting_api.browse import browse
 from flask_sqlalchemy import SQLAlchemy
-from database import Wishlist, db,migrate, BooksTesting, BookDetails
+from database import db,migrate, BooksTesting, BookDetails # Wishlist, 
 # Import your route file here. Remember to rename the folder to remove the number and '_' in front 
 from book_details_api.book_details import book_details
 from book_rating_commenting_api.book_rating import book_rating
-from wishlist_management_api.wishlist_management import wishlist_management
+# from wishlist_management_api.wishlist_management import wishlist_management
 from profile_management_api.profile import profile
 
 # this part is the navigation bar to change between urls
@@ -87,4 +87,4 @@ app.register_blueprint(book_details)
 app.register_blueprint(book_rating)
 
 # Route for module 6
-app.register_blueprint(wishlist_management)
+# app.register_blueprint(wishlist_management)

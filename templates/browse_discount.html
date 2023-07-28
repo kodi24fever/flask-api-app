@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Browse by Rating and Higher</h1>
+      <h1>Browse Discount By Publisher</h1>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="http://127.0.0.1:5000">Home</a>
@@ -40,19 +40,30 @@
 
 
       
-      <h4>Books Showing by Rating</h4>
+      <h4>Discount By Publisher</h4>
 
-
-
-      <form action="/browse-books-by-rating" method="GET">
+      <form action="/discount-by-publisher" method="PUT">
         <div class="form-group">
-          <label for="rating">Rating</label>
-          <input type="number" name="rating"><br>
-          <button type="submit" class="btn btn-primary">Get Books</button>
+          <label for="rating">Publisher</label>
+          <input type="text" name="publisher"><br>
+          <label for="rating">Discount</label>
+          <input type="number" name="discount"><br>
+          <button type="submit" class="btn btn-primary">Enter Discount</button>
         </div>
       </form>
 
-      <div>{{books}}</div>
+
+
+      <!-- <form action="/browse-top-sellers" method="GET">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Get 10 Top Sellers</button>
+        </div>
+      </form> -->
+
+      
+      <div>{{books}}</div> <br> <br>
+
+      <div>{{newBooks}}</div>
 
     </div>
   </body>

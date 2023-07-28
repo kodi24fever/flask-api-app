@@ -2,10 +2,8 @@
 .idea/
 myenv/
 .DS_Store
-<<<<<<< HEAD
-=======
+instance/
 
->>>>>>> origin/main
 
 
 # Byte-compiled / optimized / DLL files
@@ -73,7 +71,7 @@ db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
-
+instance/
 .webassets-cache
 
 # Scrapy stuff:
@@ -568,3 +566,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+instance/database.db

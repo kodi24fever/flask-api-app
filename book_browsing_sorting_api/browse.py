@@ -9,6 +9,10 @@ browse = Blueprint('browse', __name__)
 @browse.route("/browse") # api name
 # index reqquest for browse feature
 def index():
+
+    # Can add or remove items here
+    #  addBooksToBookBrowse()
+
     return render_template("browse.html", title="Browse and Sorting API")
 
 
@@ -35,7 +39,8 @@ def getBooksByGenre():
                     'rating': book.rating,
                     'price': book.price,
                     'copies_sold': book.copies_sold,
-                    'genre_name': book.genre_name
+                    'genre_name': book.genre_name,
+                    'publisher': book.publisher
                 })
 
         return render_template("browse_books_by_genre.html", title="Browse By Genre", books = json.dumps(jsonBooks))
@@ -66,7 +71,8 @@ def getTopSellers():
                     'rating': topSeller.rating,
                     'price': topSeller.price,
                     'copies_sold': topSeller.copies_sold,
-                    'genre_name': topSeller.genre_name
+                    'genre_name': topSeller.genre_name,
+                    'publisher': topSeller.publisher
                 })
 
         return render_template("browse_top_sellers.html", title="Browse 10 Top Sellers", books = json.dumps(jsonTopSellers))
@@ -100,7 +106,8 @@ def getBooksByRating():
                         'rating': book.rating,
                         'price': book.price,
                         'copies_sold': book.copies_sold,
-                        'genre_name': book.genre_name
+                        'genre_name': book.genre_name,
+                        'publisher': book.publisher
                     })
 
             return render_template("browse_by_rating.html", title="Browse By Rating", books = json.dumps(jsonBooksByRating))
@@ -109,13 +116,79 @@ def getBooksByRating():
 
 
 
+@browse.route("/discount-by-publisher", methods=["GET", "PUT"]) # update discount by publisher
+# Return books with a particular rating or higher, parameters: Rating, Response: list of books in Json Format
+def updateDiscountByPublisher():
+
+    user_publisher = request.args.get('publisher')
+    user_discount = request.args.get('discount')
+
+    # Get Books by publisher
+    books = BookBrowse.query.filter_by(publisher=user_publisher).all()
+
+
+    if(type(user_discount) != str or type(user_discount) == None):
+        return render_template("browse_discount.html", title="Browse Discount By Oublisher", books = json.dumps({'booksDiscounted': 'Enter a percentage discount'}))
+    
+    else:
+
+        atual_discount= int(user_discount) / 100
+
+        originalPrices = []
+        newPrices = []
+
+        if books:
+            for book in books:
+                originalPrices.append({
+                        'id': book.id,
+                        'price': book.price,
+                        'publisher': book.publisher
+                    })
+
+                book.price = book.price - (book.price * atual_discount)
+
+                db.session.commit()
+
+
+                newPrices.append({
+                        'id': book.id,
+                        'price': book.price,
+                        'publisher': book.publisher
+                    })
+                
+
+            return render_template("browse_discount.html", title="Browse Discount By Publisher", books = json.dumps(originalPrices), newBooks=json.dumps(newPrices))
+        else:
+            return render_template("browse_discount.html", title="Browse Discount By Publisher", books = json.dumps({'booksDiscounted': 'Now Discount Ocurred'}))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Functions separated to the features
 def addBooksToBookBrowse():
     try:
-        db.session.add(BookBrowse(title="Mad Max", author="Tom Hardy", rating=5, price=11.54, copies_sold=random(1, 1000), genre_name="Action"))
-        db.session.add(BookBrowse(title="The Black House", author="Stephen King", rating=5, price=25.54, copies_sold=random(1, 1000), genre_name="Horror"))
-        db.session.add(BookBrowse(title="Another Day", author="Leonel Squirrel", rating=1, price=22.30, copies_sold=random(1, 1000), genre_name="Fantasy"))
+        db.session.add(BookBrowse(title="Mad Max", author="Tom Hardy", rating=random.randint(1, 9), price=11.54, copies_sold=random.randint(1, 1000), genre_name="Action", publisher="LLC1"))
+        db.session.add(BookBrowse(title="The Black House", author="Stephen King", rating=random.randint(1, 9), price=25.54, copies_sold=random.randint(1, 1000), genre_name="Horror", publisher="LLC2"))
+        db.session.add(BookBrowse(title="Another Day", author="Leonel Squirrel", rating=random.randint(1, 9), price=22.30, copies_sold=random.randint(1, 1000), genre_name="Fantasy", publisher="LLC3"))
 
         # Commit all changes to database
         db.session.commit()
@@ -129,7 +202,17 @@ def addBooksToBookBrowse():
         return ''
     
 
-# def deleteBooks():
-#     db.session.query(BookBrowse).delete()
-#     db.session.commit()
-#     return ''
+
+
+
+
+
+
+
+
+
+
+def deleteBooks():
+    db.session.query(BookBrowse).delete()
+    db.session.commit()
+    return ''
