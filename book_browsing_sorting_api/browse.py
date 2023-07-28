@@ -11,7 +11,7 @@ browse = Blueprint('browse', __name__)
 def index():
 
     # Can add or remove items here
-    addBooksToBookBrowse()
+    #  addBooksToBookBrowse()
 
     return render_template("browse.html", title="Browse and Sorting API")
 
@@ -145,7 +145,9 @@ def updateDiscountByPublisher():
                         'publisher': book.publisher
                     })
 
-                book.price = book.price - atual_discount
+                book.price = book.price - (book.price * atual_discount)
+
+                db.session.commit()
 
 
                 newPrices.append({

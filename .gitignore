@@ -2,10 +2,8 @@
 .idea/
 myenv/
 .DS_Store
-<<<<<<< HEAD
-=======
+instance/
 
->>>>>>> origin/main
 
 
 # Byte-compiled / optimized / DLL files
